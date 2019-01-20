@@ -24,7 +24,7 @@ h1 {
   font-size: 4em;
   margin: 0;
   text-align: center;
-  padding-top: 10vh;
+  padding: 10vh 10px 0 10px;
 }
 
 .arrow {
