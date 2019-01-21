@@ -14,7 +14,9 @@ body {
 }
 
 header {
-  background: #555 url('img/background.jpg') no-repeat center/cover;
+  background:
+    linear-gradient(transparent, #272727),
+    #555 url('img/background.jpg') no-repeat center/cover;
   width: 100%;
   height: 100vh;
   margin-bottom: 2em;
@@ -95,6 +97,10 @@ h2 {
 }
 
 @media screen and (min-width: 768px) {
+  h1 {
+    font-size: 5em;
+  }
+
   .arrow {
     height: 10%;
     left: 40%;
