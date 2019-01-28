@@ -1,0 +1,238 @@
+/////////////////////////////////////////// Variables
+
+$primary-color: #272727;
+$secondary-color: #ff6347;
+$primary-font-color: #fff;
+
+/////////////////////////////////////////// Mixin
+
+@mixin pseudoImg($content: null, $direction: null) {
+  line-height: 1em;
+  color: rgba(0, 0, 0, .5);
+  position: absolute;
+  bottom: 0;
+  font-size: 4em;
+  font-weight: bold;
+  z-index: 2;
+  content: $content;
+
+  @if $direction==left {
+    left: 0px;
+  }
+
+  @else {
+    right: 0px;
+  }
+}
+
+@mixin after($content, $direction) {
+  line-height: 1.5em;
+  color: $primary-font-color;
+  font-size: 2em;
+  z-index: 3;
+  font-weight: normal;
+  content: $content;
+
+  @if $direction==left {
+    left: 5px;
+  }
+
+  @else {
+    right: 5px;
+  }
+}
+
+@mixin border($direction) {
+  @if $direction==left {
+    border-left: 5px solid $secondary-color;
+  }
+
+  @else {
+    border-right: 5px solid $secondary-color;
+    text-align: right;
+  }
+}
+
+/////////////////////////////////////////// Base & Misc.
+
+* {
+  font-family: 'Poppins', sans-serif;
+  color: $primary-font-color;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: $primary-color;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+
+  @media (min-width: 768px) {
+    max-width: 1200px;
+  }
+}
+
+.clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+/////////////////////////////////////////// Header
+
+header {
+  background:
+    linear-gradient(transparent, $primary-color),
+    $primary-color url('img/background.jpg') no-repeat center/cover;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 2em;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 0;
+  text-align: center;
+  padding: 10vh 10px 0 10px;
+
+  @media (min-width: 768px) {
+    font-size: 5em;
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 20%;
+  bottom: 200px;
+  left: 40%;
+  cursor: pointer;
+  animation: bounce 10s linear infinite;
+
+  @media (min-width: 768px) {
+    height: 10%;
+    left: 40%;
+  }
+}
+
+
+/////////////////////////////////////////// Body
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  display: inline-block;
+  background-color: $secondary-color;
+  margin: 0 2em 2em 0;
+
+  @media (min-width: 1000px) {
+    width: calc(50% - 1em);
+    float: left;
+  }
+}
+
+i {
+  color: $secondary-color;
+}
+
+h2 {
+  margin: 0 10%;
+}
+
+.infosvg {
+  width: 24px;
+  height: 24px;
+  fill: $secondary-color;
+  margin-right: 10px;
+}
+
+/////////////////////////////////////////// Info Boxes
+
+.infoBox {
+  background: rgba(0, 0, 0, .5);
+  width: 100%;
+  padding: 1em;
+  margin-bottom: 2em;
+  box-sizing: border-box;
+
+  &:nth-child(even) {
+    @include border(right);
+  }
+
+  &:nth-child(odd) {
+    @include border(left)
+  }
+
+  @media (min-width: 768px) {
+    width: calc(50% - 1em);
+  }
+
+  & img {
+    width: 100%;
+  }
+}
+
+.before {
+  position: relative;
+
+  &::before {
+    @include pseudoImg("Before", left);
+  }
+
+  &::after {
+    @include pseudoImg;
+    @include after("Before", left);
+  }
+}
+
+.after {
+  position: relative;
+
+  &::before {
+    @include pseudoImg("After", right);
+  }
+
+  &::after {
+    @include pseudoImg;
+    @include after("After", right);
+  }
+}
+
+/////////////////////////////////////////// Footer
+
+footer {
+  text-align: center;
+}
+
+/////////////////////////////////////////// Animation
+
+@keyframes bounce {
+
+  0%,
+  20% {
+    bottom: 200px;
+  }
+
+  5%,
+  15% {
+    bottom: 0px;
+  }
+
+  10% {
+    bottom: 100px;
+  }
+}
