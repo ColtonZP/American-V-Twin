@@ -8,6 +8,11 @@ html {
   background-color: #272727;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   width: 80%;
   margin: auto;
@@ -49,23 +54,17 @@ h1 {
 .arrow {
   position: absolute;
   width: 20%;
-  bottom: 200px;
+  bottom: 2%;
   left: 40%;
   cursor: pointer;
-  -webkit-animation: bounce 10s linear infinite;
-          animation: bounce 10s linear infinite;
+  -webkit-animation: 10s bounce 5s ease-in-out infinite;
+          animation: 10s bounce 5s ease-in-out infinite;
 }
 
 @media (min-width: 768px) {
   .arrow {
     height: 10%;
-    left: 40%;
   }
-}
-
-body {
-  margin: 0;
-  padding: 0;
 }
 
 .info {
@@ -137,72 +136,30 @@ h2 {
   width: 100%;
 }
 
-.before {
-  position: relative;
-}
-
-.before::before {
-  line-height: 1em;
-  color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
-  font-size: 4em;
+h3 {
+  margin: 0;
   font-weight: bold;
-  z-index: 2;
-  content: "Before";
-  left: 0px;
-}
-
-.before::after {
-  line-height: 1em;
-  color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
-  font-size: 4em;
-  font-weight: bold;
-  z-index: 2;
-  right: 0px;
-  line-height: 1.5em;
-  color: #fff;
   font-size: 2em;
-  z-index: 3;
-  font-weight: normal;
-  content: "Before";
-  left: 5px;
 }
 
-.after {
-  position: relative;
+.gallery {
+  height: 800px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5%;
 }
 
-.after::before {
-  line-height: 1em;
-  color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
-  font-size: 4em;
-  font-weight: bold;
-  z-index: 2;
-  content: "After";
-  right: 0px;
+@media (min-width: 768px) {
+  .gallery {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-.after::after {
-  line-height: 1em;
-  color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
-  font-size: 4em;
-  font-weight: bold;
-  z-index: 2;
-  right: 0px;
-  line-height: 1.5em;
-  color: #fff;
-  font-size: 2em;
-  z-index: 3;
-  font-weight: normal;
-  content: "After";
-  right: 5px;
+.photoPlaceHolder {
+  background-color: gray;
 }
 
 footer {
@@ -211,29 +168,25 @@ footer {
 
 @-webkit-keyframes bounce {
   0%,
+  10%,
   20% {
-    bottom: 200px;
+    bottom: 2%;
   }
   5%,
   15% {
-    bottom: 0px;
-  }
-  10% {
-    bottom: 100px;
+    bottom: 10%;
   }
 }
 
 @keyframes bounce {
   0%,
+  10%,
   20% {
-    bottom: 200px;
+    bottom: 2%;
   }
   5%,
   15% {
-    bottom: 0px;
-  }
-  10% {
-    bottom: 100px;
+    bottom: 10%;
   }
 }
 /*# sourceMappingURL=stylesheets.css.map */

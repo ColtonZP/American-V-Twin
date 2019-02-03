@@ -4,43 +4,7 @@ $primary-color: #272727;
 $secondary-color: #ff6347;
 $primary-font-color: #fff;
 
-/////////////////////////////////////////// Mixin
-
-@mixin pseudoImg($content: null, $direction: null) {
-  line-height: 1em;
-  color: rgba(0, 0, 0, .5);
-  position: absolute;
-  bottom: 0;
-  font-size: 4em;
-  font-weight: bold;
-  z-index: 2;
-  content: $content;
-
-  @if $direction==left {
-    left: 0px;
-  }
-
-  @else {
-    right: 0px;
-  }
-}
-
-@mixin after($content, $direction) {
-  line-height: 1.5em;
-  color: $primary-font-color;
-  font-size: 2em;
-  z-index: 3;
-  font-weight: normal;
-  content: $content;
-
-  @if $direction==left {
-    left: 5px;
-  }
-
-  @else {
-    right: 5px;
-  }
-}
+/////////////////////////////////////////// Mixins
 
 @mixin border($direction) {
   @if $direction==left {
@@ -63,6 +27,11 @@ $primary-font-color: #fff;
 html {
   scroll-behavior: smooth;
   background-color: $primary-color;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -107,25 +76,18 @@ h1 {
 .arrow {
   position: absolute;
   width: 20%;
-  bottom: 200px;
+  bottom: 2%;
   left: 40%;
   cursor: pointer;
-  animation: bounce 10s linear infinite;
+  animation: 10s bounce 5s ease-in-out infinite;
 
   @media (min-width: 768px) {
     height: 10%;
-    left: 40%;
   }
 }
 
 
-/////////////////////////////////////////// Body
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
+/////////////////////////////////////////// Main
 .info {
   display: flex;
   flex-wrap: wrap;
@@ -186,30 +148,25 @@ h2 {
   }
 }
 
-.before {
-  position: relative;
+h3 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 2em;
+}
 
-  &::before {
-    @include pseudoImg("Before", left);
-  }
-
-  &::after {
-    @include pseudoImg;
-    @include after("Before", left);
+/////////////////////////////////////////// Gallery
+.gallery {
+  height: 800px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5%;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.after {
-  position: relative;
-
-  &::before {
-    @include pseudoImg("After", right);
-  }
-
-  &::after {
-    @include pseudoImg;
-    @include after("After", right);
-  }
+.photoPlaceHolder {
+  background-color: gray;
 }
 
 /////////////////////////////////////////// Footer
@@ -223,16 +180,13 @@ footer {
 @keyframes bounce {
 
   0%,
+  10%,
   20% {
-    bottom: 200px;
+    bottom: 2%;
   }
 
   5%,
   15% {
-    bottom: 0px;
-  }
-
-  10% {
-    bottom: 100px;
+    bottom: 10%;
   }
 }
