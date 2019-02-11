@@ -97,10 +97,6 @@ i {
   color: #ff6347;
 }
 
-h2 {
-  margin: 0 10%;
-}
-
 .infosvg {
   width: 24px;
   height: 24px;
@@ -143,12 +139,22 @@ h3 {
 }
 
 .gallery {
-  height: 800px;
+  height: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5%;
+  grid-gap: 10px;
+}
+
+.gallery .main {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.gallery img {
+  background-color: gray;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -158,11 +164,8 @@ h3 {
   }
 }
 
-.photoPlaceHolder {
-  background-color: gray;
-}
-
 footer {
+  margin-top: 10px;
   text-align: center;
 }
 

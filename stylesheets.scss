@@ -88,6 +88,7 @@ h1 {
 
 
 /////////////////////////////////////////// Main
+
 .info {
   display: flex;
   flex-wrap: wrap;
@@ -109,10 +110,6 @@ h1 {
 
 i {
   color: $secondary-color;
-}
-
-h2 {
-  margin: 0 10%;
 }
 
 .infosvg {
@@ -156,22 +153,31 @@ h3 {
 
 /////////////////////////////////////////// Gallery
 .gallery {
-  height: 800px;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5%;
+  grid-gap: 10px;
+
+  & .main {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+
+  & img {
+    background-color: gray;
+    width: 100%;
+  }
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.photoPlaceHolder {
-  background-color: gray;
-}
 
 /////////////////////////////////////////// Footer
 
 footer {
+  margin-top: 10px;
   text-align: center;
 }
 
