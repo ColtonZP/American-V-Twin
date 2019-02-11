@@ -3,6 +3,7 @@
 $primary-color: #272727;
 $secondary-color: #ff6347;
 $primary-font-color: #fff;
+$background-color: #111;
 
 /////////////////////////////////////////// Mixins
 
@@ -122,7 +123,7 @@ i {
 /////////////////////////////////////////// Info Boxes
 
 .infoBox {
-  background: rgba(0, 0, 0, .5);
+  background: $background-color;
   width: 100%;
   padding: 1em;
   margin-bottom: 2em;
@@ -149,6 +150,14 @@ h3 {
   margin: 0;
   font-weight: bold;
   font-size: 2em;
+}
+
+/////////////////////////////////////////// Services
+
+.services {
+  & .service {
+    background-color: $background-color
+  }
 }
 
 /////////////////////////////////////////// Gallery

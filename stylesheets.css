@@ -105,7 +105,7 @@ i {
 }
 
 .infoBox {
-  background: rgba(0, 0, 0, 0.5);
+  background: #111;
   width: 100%;
   padding: 1em;
   margin-bottom: 2em;
@@ -136,6 +136,10 @@ h3 {
   margin: 0;
   font-weight: bold;
   font-size: 2em;
+}
+
+.services .service {
+  background-color: #111;
 }
 
 .gallery {
