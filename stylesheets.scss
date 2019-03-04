@@ -23,6 +23,9 @@ $background-color: #111;
 * {
   font-family: 'Poppins', sans-serif;
   color: $primary-font-color;
+  &::selection {
+    background: $secondary-color;
+  }
 }
 
 html {
@@ -33,6 +36,11 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+h2 {
+  font-size: 2em;
+  pointer-events: none;
 }
 
 .container {
@@ -90,12 +98,6 @@ h1 {
 
 /////////////////////////////////////////// Main
 
-.info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 #map {
   width: 100%;
   height: 400px;
@@ -124,9 +126,7 @@ i {
 
 .infoBox {
   background: $background-color;
-  width: 100%;
   padding: 1em;
-  margin-bottom: 2em;
   box-sizing: border-box;
 
   &:nth-child(even) {
@@ -135,10 +135,6 @@ i {
 
   &:nth-child(odd) {
     @include border(left)
-  }
-
-  @media (min-width: 768px) {
-    width: calc(50% - 1em);
   }
 
   & img {
@@ -155,21 +151,75 @@ h3 {
 /////////////////////////////////////////// Services
 
 .services {
-  & .service {
-    background-color: $background-color
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+ 
+  & [class^="serviceBox"] {
+    background-color: $background-color;
+    border: none;
+  }
+
+  & span {
+    font-size: 1.5em;
+    color: $secondary-color;
+  }
+
+  & [class^="serviceInfo"] {
+    background: $secondary-color;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .6s;
+    pointer-events: none;
+
+     @media (min-width: 768px) {
+      grid-column: span 2;
+     }
+  }
+
+  & .showInfo {
+    max-height: 9000px;
+    transition: max-height .6s;
+  }
+
+  & .moreInfo {
+    background: $background-color;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & .serviceInfo1 {
+      grid-row: 2;
+    }
+
+    & .serviceInfo3 {
+      grid-row: 5;
+    }
   }
 }
 
 /////////////////////////////////////////// Gallery
 .gallery {
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 
-  & .main {
+  & .main1, .main2 {
     grid-row: span 2;
     grid-column: span 2;
+  }
+
+  & .main2 {
+    @media (min-width: 768px) {
+      grid-row: 3/5;
+      grid-column: 3/5;
+    }
   }
 
   & img {

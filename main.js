@@ -1,12 +1,36 @@
+
 const arrow = document.querySelector('.arrow');
-const book = document.querySelector('.book');
+const services = document.querySelector('.services');
 
-const i = 0
-const images = ['img/spin1', 'img/spin2', 'img/spin3'];
-const time = 3000;
+let infoShowing = null;
 
-arrow.addEventListener('click', (event) => {
+arrow.addEventListener('click', () => {
   document.querySelector('.location').scrollIntoView({
-    behavior: 'smooth'
+    behavior: 'smooth',
   });
+});
+
+function removeInfo() {
+  if (infoShowing !== null) {
+    infoShowing.classList.remove('showInfo');
+  }
+  infoShowing = null;
+}
+
+function showInfo(info) {
+  info.classList.add('showInfo');
+  infoShowing = info;
+}
+
+services.addEventListener('click', (event) => {
+  const clickedBox = event.target.parentNode.querySelector(`.serviceInfo${event.target.className.slice(-1)}`);
+
+  if (clickedBox === infoShowing) {
+    removeInfo();
+  } else {
+    removeInfo();
+    setTimeout(() => {
+      showInfo(clickedBox);
+    }, 600);
+  }
 });
