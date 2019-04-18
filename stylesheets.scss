@@ -204,6 +204,16 @@ h3 {
   }
 }
 
+/////////////////////////////////////////// Dealer Logos
+.dealerLogos {
+  & * {
+    width: 90%;
+    margin: auto;
+  }
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
 /////////////////////////////////////////// Gallery
 .gallery {
   display: grid;
